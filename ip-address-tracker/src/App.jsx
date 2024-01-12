@@ -1,4 +1,5 @@
 import React from "react"
+import arrow from "./assets/images/icon-arrow.svg"
 import "./styles/App.css"
 
 function App() {
@@ -7,6 +8,10 @@ function App() {
     <div className="main">
       <div className="input-main">
         <div className="input-title">IP Address Tracker</div>
+        <div className="input-field">
+        <input className="input"/>
+        <img src={arrow} className="input-arrow"/>
+      </div>
       </div>
       <div className="map-main"></div>
     </div>
