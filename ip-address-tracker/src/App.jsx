@@ -9,9 +9,11 @@ function App() {
       <div className="input-main">
         <div className="input-title">IP Address Tracker</div>
         <div className="input-field">
-        <input className="input"/>
-        <img src={arrow} className="input-arrow"/>
-      </div>
+          <input className="input"/>
+          <div className="input-button">
+            <img src={arrow} className="input-arrow"/>
+          </div>
+        </div>
       </div>
       <div className="map-main"></div>
     </div>
