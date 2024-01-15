@@ -1,16 +1,16 @@
-import React from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import arrow from "./assets/images/icon-arrow.svg";
 import "./styles/App.css";
 
 function App() {
+  const [query, setQuery] = useState(null)
 
   async function address() {
-    const apiURL = "https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&ipAddress=8.8.8.8";
     const apiKey = "at_xqIYtoLkrk8OBkudtIizO5uRzKTVG";
   
     try {
-      const response = await axios.get(apiURL, { params: { apiKey: apiKey } });
+      const response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&ipAddress=" + query, { params: { apiKey: apiKey } })
       console.log(response.data);
     } catch (error) {
       console.error('Something went wrong getting Geolocation from API!', error);
@@ -22,7 +22,10 @@ function App() {
       <div className="input-main">
         <div className="input-title">IP Address Tracker</div>
         <div className="input-field">
-        <input className="input" placeholder="Search for any IP address or domain"/>
+        <input 
+          className="input" 
+          placeholder="Search for any IP address or domain"
+          onChange={(e) => setQuery(e.target.value)}/>
         <img src={arrow} className="input-arrow" onClick={() => address()}/>
       </div>
       </div>
