@@ -3,7 +3,7 @@ import axios from 'axios';
 import arrow from "./assets/images/icon-arrow.svg";
 import "./styles/App.css";
 
-function App() {
+function IPlookup() {
   const [query, setQuery] = useState(null)
 
   async function address() {
@@ -34,4 +34,4 @@ function App() {
   )
 }
 
-export default App;
+export default IPlookup;
