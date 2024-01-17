@@ -22,12 +22,15 @@ function App() {
       <div className="input-main">
         <div className="input-title">IP Address Tracker</div>
         <div className="input-field">
-        <input 
-          className="input" 
-          placeholder="Search for any IP address or domain"
-          onChange={(e) => setQuery(e.target.value)}/>
-        <img src={arrow} className="input-arrow" onClick={() => address()}/>
-      </div>
+          <input 
+            className="input" 
+            placeholder="Search for any IP address or domain"
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <div className="input-button">
+            <img src={arrow} className="input-arrow" onClick={() => address()}/>
+          </div>
+        </div>
       </div>
       <div className="map-main"></div>
     </div>
