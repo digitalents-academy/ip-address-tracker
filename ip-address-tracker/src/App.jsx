@@ -37,16 +37,20 @@ function App() {
       {result && (
         <div className="card">
         <div className="card-image">
-          <p>IP ADDRESS</p>
+          <p className='header'>IP ADDRESS</p>
+          <p className='result'>{result.ip}</p>
         </div>
         <div className="card-image">
-          <p>LOCATION</p>
+          <p className='header'>LOCATION</p>
+          <p className='result'>{result.location.region}</p>
         </div>
         <div className="card-image">
-          <p>TIMEZONE</p>
+          <p className='header'>TIMEZONE</p>
+          <p className='result'>{result.location.timezone}</p>
         </div>
-        <div className="card-image">
-          <p>ISP</p>
+        <div className="card-image-last">
+          <p className='header'>ISP</p>
+          <p className='result'>{result.isp}</p>
         </div>
       </div>
       )}
