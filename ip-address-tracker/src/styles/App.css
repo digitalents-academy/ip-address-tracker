@@ -44,6 +44,8 @@
 }
 
 .input {
+   color: white;
+   background-color: #060708;
    border: none;
    height: 35px;
    width: 450px;
@@ -82,7 +84,7 @@
     flex-direction: column;
     padding: 40px;
     width: 300px;
-    border-right: 1px solid grey;
+    border-right: 1px solid #060708;
 }
 
 .card-image-last {
@@ -99,4 +101,21 @@
 .result {
     font-size: 26px;
     font-weight: bold;
+}
+
+.error {
+    font-family: 'Red Hat Display',sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 200px;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(138, 42, 42);
+    border-radius: 15px;
+    color: white;
+    width: 400px;
+    height: 140px;
+    padding: 20px;
 }

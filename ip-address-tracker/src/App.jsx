@@ -6,6 +6,7 @@ import "./styles/App.css";
 function App() {
   const [query, setQuery] = useState(null);
   const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
 
   function isNumber(char) {
     return /^\d+$/.test(char);
@@ -15,6 +16,7 @@ function App() {
     const apiKey = "at_xqIYtoLkrk8OBkudtIizO5uRzKTVG";
   
     try {
+      setError(null);
       let response;
       if (isNumber(query[0])) {
         response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&ipAddress=" + query, { params: { apiKey: apiKey } })
@@ -24,7 +26,7 @@ function App() {
       console.log(response.data);
       setResult(response.data);
     } catch (error) {
-      console.error('Something went wrong getting Geolocation from API!', error);
+      setError('Something went wrong getting Geolocation from API!', error);
     }
   }
 
@@ -62,6 +64,11 @@ function App() {
           <p className='result'>{result.isp}</p>
         </div>
       </div>
+      )} 
+      {error && (
+        <div className="error">
+          {error}
+        </div>
       )}
     </div>
   )
