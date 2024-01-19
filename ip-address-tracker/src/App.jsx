@@ -7,11 +7,20 @@ function App() {
   const [query, setQuery] = useState(null);
   const [result, setResult] = useState(null);
 
+  function isNumber(char) {
+    return /^\d+$/.test(char);
+  }
+  
   async function address() {
     const apiKey = "at_xqIYtoLkrk8OBkudtIizO5uRzKTVG";
   
     try {
-      const response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&ipAddress=" + query, { params: { apiKey: apiKey } })
+      let response;
+      if (isNumber(query[0])) {
+        response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&ipAddress=" + query, { params: { apiKey: apiKey } })
+      } else {
+        response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&domain=" + query, { params: { apiKey: apiKey } })
+      }
       console.log(response.data);
       setResult(response.data);
     } catch (error) {
