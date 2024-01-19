@@ -13,10 +13,10 @@ function App() {
   }
   
   async function address() {
+    setResult(null)
     const apiKey = "at_xqIYtoLkrk8OBkudtIizO5uRzKTVG";
   
     try {
-      setError(null);
       let response;
       if (isNumber(query[0])) {
         response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&ipAddress=" + query, { params: { apiKey: apiKey } })
@@ -67,7 +67,12 @@ function App() {
       )} 
       {error && (
         <div className="error">
+         <div className='close' onClick={() => setError(null)}>
+          X
+         </div>
+         <div className='message'>
           {error}
+         </div>
         </div>
       )}
     </div>
