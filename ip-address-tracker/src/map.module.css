@@ -1,6 +1,5 @@
 /* sizing of map container */
 .MapContainer {
   height: 100vh;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: optimizeQuality;
 }
+
