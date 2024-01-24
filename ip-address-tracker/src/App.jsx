@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="main">
       <div className="input-main">
-        <div className="input-title">IP Address Tracker</div>
+        <div className="input-title" onClick={() => window.location.reload()}>IP Address Tracker</div>
         <div className="input-field">
           <input
             className="input" 
