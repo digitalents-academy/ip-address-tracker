@@ -81,6 +81,7 @@
     height: 140px;
     border-radius: 15px;
     padding: 20px;
+    z-index: 1;
 }
 
 .card-image {
@@ -123,6 +124,7 @@
     width: 400px;
     height: 140px;
     padding: 20px;
+    z-index: 1;
 }
 
 .close {

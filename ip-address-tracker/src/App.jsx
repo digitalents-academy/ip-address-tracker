@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import Map from "./Map"
 import arrow from "./assets/images/icon-arrow.svg";
 import "./styles/App.css";
 
@@ -7,6 +8,7 @@ function App() {
   const [query, setQuery] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [coordinates, setCoordinates] = useState([60.194995, 24.947628]);
 
   function isNumber(char) {
     return /^\d+$/.test(char);
@@ -14,6 +16,7 @@ function App() {
   
   async function address() {
     setResult(null)
+    setError(null)
     const apiKey = "at_xqIYtoLkrk8OBkudtIizO5uRzKTVG";
   
     try {
@@ -23,8 +26,8 @@ function App() {
       } else {
         response = await axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=at_xqIYtoLkrk8OBkudtIizO5uRzKTVG&domain=" + query, { params: { apiKey: apiKey } })
       }
-      console.log(response.data);
       setResult(response.data);
+      setCoordinates([response.data.location.lat, response.data.location.lng])
     } catch (error) {
       setError('Something went wrong getting Geolocation from API!', error);
     }
@@ -44,6 +47,9 @@ function App() {
             <img src={arrow} className="input-arrow" onClick={() => address()}/>
           </div>
         </div>
+      </div>
+      <div className='map-main'>
+        <Map coordinates={coordinates} />
       </div>
       {result && (
         <div className="card">
