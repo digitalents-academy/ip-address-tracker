@@ -9,6 +9,7 @@ function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [coordinates, setCoordinates] = useState([60.194995, 24.947628]);
+  const [marker, setMarker] = useState([60.194995, 24.947628]);
 
   function isNumber(char) {
     return /^\d+$/.test(char);
@@ -28,6 +29,7 @@ function App() {
       }
       setResult(response.data);
       setCoordinates([response.data.location.lat, response.data.location.lng])
+      setMarker([response.data.location.lat, response.data.location.lng])
     } catch (error) {
       setError('Something went wrong getting Geolocation from API!', error);
     }
@@ -49,7 +51,7 @@ function App() {
         </div>
       </div>
       <div className='map-main'>
-        <Map coordinates={coordinates} />
+        <Map marker={marker} coordinates={coordinates} />
       </div>
       {result && (
         <div className="card">
